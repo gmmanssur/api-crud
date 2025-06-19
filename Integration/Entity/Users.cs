@@ -8,15 +8,19 @@ namespace Integration.Entity
     {
         [Key]
         [Required]
-        public string? Id { get; set; }
+        [Column("Id")]
+        public int Id { get; set; }
 
         [Required]
+        [Column("name")]
         public string? Name { get; set; }
 
-        [Required] 
+        [Required]
+        [Column("email")]
         public string? Email { get; set; }
 
-        [Required] 
-        public string? Password { get; set; }
+        [Required]
+        [Column("password_hash")]
+        public string? PasswordHash { get; set; }
     }
 }

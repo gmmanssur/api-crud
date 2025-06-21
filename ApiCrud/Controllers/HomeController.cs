@@ -1,4 +1,5 @@
 ﻿using Business;
+using Integration.Entity;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
@@ -55,6 +56,64 @@ namespace ApiCrud.Controllers
             {
                 var m_users = await _homeBusiness.GetAllUsersAsync();
                 return Ok(m_users);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Create new user
+        /// </summary>
+        /// <param name="p_user"></param>
+        /// <returns></returns>
+        [HttpPost("Users")]
+        public async Task<IActionResult> CreateUser([FromBody] Users p_user)
+        {
+            try
+            {
+                if (p_user == null)
+                    return BadRequest("User data is null.");
+
+                await _homeBusiness.CreateUserAsync(p_user);
+
+                return Ok();
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Delete user
+        /// </summary>
+        /// <param name="p_email"></param>
+        /// <returns></returns>
+        [HttpDelete("Users/{p_email}")]
+        public async Task<IActionResult> DeleteUser(string p_email)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(p_email))
+                    return BadRequest("Unable to delete user.");
+
+                await _homeBusiness.DeleteUserAsync(p_email);
+
+                return Ok();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {

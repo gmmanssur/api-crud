@@ -13,5 +13,7 @@ namespace Integration
         Task CreateUserAsync(Users p_user);
 
         Task DeleteUserAsync(string p_email);
+
+        Task UpdateUserAsync(Users p_user);
     }
 }

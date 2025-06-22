@@ -37,7 +37,19 @@ namespace Business
             if (!m_userExist)
                 throw new KeyNotFoundException("User not found.");
 
-            await _userRepository.DeleteUserAsync(p_email);            
+            await _userRepository.DeleteUserAsync(p_email);
+        }
+
+        public async Task UpdateUserAsync(Users p_user)
+        {
+            string m_email = p_user.Email?.Trim() ?? string.Empty;
+
+            bool m_userExist = await _userRepository.GetUserByEmailAsync(m_email);
+
+            if (!m_userExist)
+                throw new ValidationException("User not found.");
+
+            await _userRepository.UpdateUserAsync(p_user);
         }
     }
 }

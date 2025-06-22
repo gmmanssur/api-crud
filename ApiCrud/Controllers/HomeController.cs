@@ -120,5 +120,27 @@ namespace ApiCrud.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        [HttpPut("Users")]
+        public async Task<IActionResult> UpdateUser([FromBody] Users p_user)
+        {
+            try
+            {
+                if (p_user == null)
+                    return BadRequest("User data is null.");
+
+                await _homeBusiness.UpdateUserAsync(p_user);
+
+                return Ok("User updated successfully.");
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
     }
 }

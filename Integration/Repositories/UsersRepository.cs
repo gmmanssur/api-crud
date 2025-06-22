@@ -38,5 +38,11 @@ namespace Integration.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task UpdateUserAsync(Users p_user)
+        {
+            _context.Users.Update(p_user);
+            await _context.SaveChangesAsync();
+        }
     }
 }

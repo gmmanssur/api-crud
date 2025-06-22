@@ -78,7 +78,7 @@ namespace ApiCrud.Controllers
 
                 await _homeBusiness.CreateUserAsync(p_user);
 
-                return Ok();
+                return Ok("User created successfully.");
             }
             catch (ValidationException ex)
             {
@@ -105,7 +105,7 @@ namespace ApiCrud.Controllers
 
                 await _homeBusiness.DeleteUserAsync(p_email);
 
-                return Ok();
+                return Ok("User removed successfully.");
             }
             catch (KeyNotFoundException ex)
             {

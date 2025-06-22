@@ -34,10 +34,10 @@ namespace Business
         {
             bool m_userExist = await _userRepository.GetUserByEmailAsync(p_email);
 
-            if (m_userExist)
-                await _userRepository.DeleteUserAsync(p_email);
+            if (!m_userExist)
+                throw new KeyNotFoundException("User not found.");
 
-            throw new KeyNotFoundException("User not found.");
+            await _userRepository.DeleteUserAsync(p_email);            
         }
     }
 }

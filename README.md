@@ -31,6 +31,8 @@ This project is designed with scalability, modularity, and clean code practices 
 - [x] API structure using Controllers and Dependency Injection
 
 ### 🚧 In Progress / Planned
+
+## Backend (.NET)
 - 🔄 **FluentValidation** for request validation
 - 🧱 **Custom Middleware** (e.g., error handling, logging)
 - 🏗 **Scalable Architecture** (e.g., Service/Repository pattern)
@@ -42,6 +44,17 @@ This project is designed with scalability, modularity, and clean code practices 
 - 📄 API documentation with **Swagger**
 - 🌐 Dockerization for easy deployment
 - 🧪 Unit and Integration tests
+
+- 
+## Frontend (Angular)
+- 📐 Component Architecture (clean, reusable UI components)
+- 📡 Service Layer for HTTP requests to the API
+- ✅ Reactive Forms with validation and feedback
+- 🚥 Routing & Navigation Guards
+- 🔒 JWT Authentication
+- 🎨 UI/UX Improvements (e.g., modals, toast messages, loading spinners)
+- 🌍 Environment Configuration for development and production
+- 📦 State Management (optional, e.g., with RxJS or NgRx)
 
 ---
 

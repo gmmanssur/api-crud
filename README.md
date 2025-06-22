@@ -75,13 +75,18 @@ This project is designed with scalability, modularity, and clean code practices 
 
 ### FrontEnd (Angular)
 cd frontend-folder
+
 npm install
+
 ng serve
 
 ### Backend (.NET)
 cd ApiCrud
+
 dotnet restore
+
 dotnet build
+
 dotnet run
 
 ---
